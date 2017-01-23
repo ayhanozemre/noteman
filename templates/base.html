@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{{ STATIC_URL}}css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+    	<div>
+			{% if messages %}
+			  <ul class="messages">
+			    {% for message in messages %}
+			      <li class="{{ message.tags }}">{{ message }}</li>
+			    {% endfor %}
+			  </ul>
+			{% endif %}
+    	</div>
+        <div class="container">
+            {% block container %}{% endblock %}
+        </div>
+        <script src="{{STATIC_URL}}js/jquery-3.1.1.js"></script>
+        <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+        {% block extra_js %}{% endblock %}
+        <script type="text/javascript">
+        	$('.close').on('click', function(){
+        		$('.alert').remove();
+        	});
+        </script>
+    </body>
+</html>
